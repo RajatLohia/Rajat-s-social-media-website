@@ -1,5 +1,5 @@
 const express = require('express');
-
+console.log('router loaded');
 const router = express.Router();
 const homeController= require('../contollers/home_controller');
 
