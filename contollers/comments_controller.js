@@ -13,11 +13,12 @@ module.exports.create=async function(req,res){
                 user: req.user._id
             });
             post.comments.push(comment);
-            post.save();    
+            post.save();  
+            req.flash('success', 'Comment published!');  
             res.redirect('/');
         }
     }catch(err){
-        console.log('error',err);
+        req.flash('error', err);
         return;
     }
 }
@@ -29,19 +30,21 @@ module.exports.destroy=async function(req,res){
 
     let comment =await Comment.findById(req.params.id);
          if(comment.user == req.user.id){
-             let postId= comment.post;
+            let postId= comment.post;
 
-             comment.remove();
+            comment.remove();
 
-             Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}}, function(err,post){
-                 return res.redirect('back');
-             });
+            let post= Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}});
+            req.flash('success', 'Comment deleted!');
+            return res.redirect('back');
+            
          }else{
+            req.flash('error', 'Unauthorized');
             return res.redirect('back');
         }
 }
 catch(err){
-    console.log('error',err);
+    req.flash('error', err);
     return;           
 }
 }
