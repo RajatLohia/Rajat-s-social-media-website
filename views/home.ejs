@@ -6,7 +6,7 @@
     <h4>Posts</h4>
     <% if(locals.user){ %>
     <form action="/posts/create " id="new-post-form" method="POST">
-        <textarea name="content" id="" cols="30" rows="3" placeholder="type here"></textarea>
+        <textarea name="content" id="" cols="30" rows="3" placeholder="type here" required></textarea>
         <input type="submit" value="Post">
     </form>
     <% } %>
@@ -14,14 +14,20 @@
         <ul>
             <% for(post of posts){ %>
             
-               <li>
-                   <h4><%= post.content %></h4>
-                   <small>
-                       <%= post.user.name %>
-                   </small>
-               </li> 
+                <%- include('_post'); %>
 
-             <%} %>
-        </ul>
+            <% } %>
+
+        </ul>        
     </div>
+</section>
+
+<section id="user-friends">
+    <h4>Friends</h4>
+    <% for( u of all_users){ %>
+    <p>
+        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+    </p>
+    
+    <% } %>
 </section>
