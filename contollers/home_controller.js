@@ -1,19 +1,12 @@
 const Post = require('../models/post');
 const User= require('../models/users');
 
-module.exports.home = function(req, res){
-    //console.log(req.cookies);
-   // res.cookie('user_id',25)
-   
-//    Post.find({},function(err,posts){
-//     return res.render('home',{
-//         rajat:"HOME",
-//         posts: posts
-//     });
-//    })
+module.exports.home = async function(req, res){
+ 
 
-//popultae the user of each post
-   Post.find({})
+    try{
+        //popultae the user of each post
+    let posts=  await Post.find({})
    .populate('user')
    .populate({
        path: 'comments',
@@ -21,22 +14,19 @@ module.exports.home = function(req, res){
            path:'user'
        }
    })
-
+  let users= await User.find({})
   
+  return res.render('home',{
+    rajat:"HOME",
+    posts: posts,
+    all_users: users
+  });
 
-   .exec(function(err,posts){
-    if(err)
+    }catch(err)
     {
-        console.log("error here");  
+        console.log('error');
+        return;    
     }
-    User.find({},function(err,users){
-        return res.render('home',{
-            rajat:"HOME",
-            posts: posts,
-            all_users: users
-        });
-    })
-   });
 }
 
 //module.exports.actionName = function(Req, res){}
