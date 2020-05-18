@@ -7,14 +7,16 @@ module.exports.home = async function(req, res){
     try{
         //popultae the user of each post
     let posts=  await Post.find({})
-   .populate('user')
-   .populate({
+    .sort('-createdAt')
+    .populate('user')
+    .populate({
        path: 'comments',
        populate: {
            path:'user'
        }
-   })
-  let users= await User.find({})
+   });
+
+  let users= await User.find({});
   
   return res.render('home',{
     rajat:"HOME",

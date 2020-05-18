@@ -21,7 +21,7 @@ function(req,email,password,done){
             return done(null,false);
         }
         return done(null,user);
-    })
+    });
 }
 ));
 
