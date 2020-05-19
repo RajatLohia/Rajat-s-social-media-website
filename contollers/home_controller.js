@@ -11,7 +11,8 @@ module.exports.home = async function(req, res){
     .populate('user')
     .populate({
        path: 'comments',
-       populate: {
+       populate: 
+       {
            path:'user'
        }
    });
@@ -24,7 +25,8 @@ module.exports.home = async function(req, res){
     all_users: users
   });
 
-    }catch(err)
+    }
+    catch(err)
     {
         console.log('error');
         return;    
