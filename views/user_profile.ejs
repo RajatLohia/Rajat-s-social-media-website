@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 
-<img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+<img src="<%= profile_user.avatar %>" alt="<%= user.name %>" width="15%" style="border: 1px solid rgb(197, 45, 45)">
 
 <% if(user.id == profile_user.id){  %>
      <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
@@ -13,7 +13,6 @@
      </form>
 
      <%} else {%>
-
           <p><%=profile_user.name%></p>
           <p><%=profile_user.email%></p>
      <% } %>
