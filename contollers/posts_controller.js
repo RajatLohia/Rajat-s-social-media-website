@@ -33,7 +33,6 @@ module.exports.destroy = async function(req,res){
     try{
         let post= await Post.findById(req.params.id);
 
-        console.log("came here");
         if(post.user == req.user.id)
         {
             post.remove();
@@ -42,8 +41,7 @@ module.exports.destroy = async function(req,res){
         
 
             if(req.xhr){
-                
-                
+
                 return res.status(200).json({
                     data: {
                         post_id: req.params.id  
