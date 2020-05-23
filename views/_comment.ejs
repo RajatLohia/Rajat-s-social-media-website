@@ -1,9 +1,9 @@
+<script src="https://kit.fontawesome.com/d1e9d1ba92.js" crossorigin="anonymous"></script>
 <li id="comment-<%= comment._id %>">
     <p>
-        <% if ( locals.user && locals.user.id == comment.user.id){ %>
+        <% if ( locals.user && locals.user.id == comment.user._id){ %>
             <small>
-                it came here/
-                <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">delete</a>
+                <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>"><i class="fas fa-trash-alt"></i></a>
             </small>
             <% } %>
         <%= comment.content %>
@@ -13,15 +13,15 @@
         </small>
 
         <small>
+            <% comment.likes.length %>
             <% if(locals.user){ %>
-            
             <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
-                <% comment.likes.length %> Likes
+                <% comment.likes.length %> <i class="far fa-thumbs-up"></i>
             </a>
         
             <% }else{ %>
 
-                <%= comment.likes.length %> Likes
+                <%= comment.likes.length %> <i class="far fa-thumbs-up"></i>    
             
             <% } %>
         </small>

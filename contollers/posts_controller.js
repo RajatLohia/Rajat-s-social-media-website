@@ -22,7 +22,7 @@ module.exports.create = async function(req,res){
         });
     }
 
-    req.flash('success','Posst Published!!');
+    req.flash('success','Post Published!!');
     return res.redirect('back');
     
     }catch(err){

@@ -21,14 +21,17 @@ class ToggleLike{
                 console.log(likesCount);
                 if (data.data.deleted == true){
                     likesCount -= 1;
+                    $(self).attr('data-likes', likesCount);
+                    $(self).html(`${likesCount} <i class="far fa-thumbs-up"></i>`);
                     
                 }else{
                     likesCount += 1;
+                    $(self).attr('data-likes', likesCount);
+                    $(self).html(`${likesCount} <i class="far fa-thumbs-down"></i>`);
                 }
 
 
-                $(self).attr('data-likes', likesCount);
-                $(self).html(`${likesCount} Likes`);
+                
 
             })
             .fail(function(errData) {

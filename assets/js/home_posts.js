@@ -46,13 +46,13 @@
              ${ post.user.name }
              </small>
              <small>
-                <a class="delete-post-button" href="/posts/destroy/${ post._id }">Delete
+                <a class="delete-post-button" href="/posts/destroy/${ post._id }">X 
                 </a>
             </small>
             <br>
             <small>
             <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id= ${post._id}&type=Post">
-            0 Likes
+            <i class="far fa-thumbs-up"></i>
             </a>
             </small>
          </p>
