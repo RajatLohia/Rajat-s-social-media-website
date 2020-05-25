@@ -1,8 +1,9 @@
 //acquired a library
 const mongoose= require("mongoose");
+const env= require('./environment');
 
 //connect to database
-mongoose.connect("mongodb://localhost/codeial_development");
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 //acquire the cinnection to check if it is successfull
 const db= mongoose.connection;
