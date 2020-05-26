@@ -26,7 +26,7 @@ const development={
         pass: '1234'
         }
     },
-    google_client_clientID: "1033342117050-46upkd6s8lb33fva7cdtk0biv92u44qv.apps.googleusercontent.com",
+    google_client_ID: "1033342117050-46upkd6s8lb33fva7cdtk0biv92u44qv.apps.googleusercontent.com",
     google_client_secret: "Vo79YPKZQXYQamwE_pMOks9X",
     google_callbackURL: "http://localhost:8000/users/auth/google/callback",
     jwt_secret: 'codeial',
@@ -65,4 +65,4 @@ const production = {
     }
 }
 
-module.exports= eval (process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
+module.exports= development;
